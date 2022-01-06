@@ -1,3 +1,4 @@
+""" A class that can be used to represent car """
 class Car:
     # A simple attempt to represent a car.
 
@@ -11,7 +12,7 @@ class Car:
     def get_descriptive_name(self):
         # Return a neatly formatted descriptive name.
         long_name = f"{self.year} {self.manufacturer} {self.model}"
-        return long_name.title()
+        return long_name.title() # Return Uppercase first letter
     
     def read_odometer(self):
         # Print a statement showing the car's mileage.
@@ -32,27 +33,44 @@ class Car:
         else:
             print("Milege can't negative number")
 
-my_new_car = Car('audi', 'a4', 2019)
-print(my_new_car.get_descriptive_name())
+class Battery:
+    """ A simple attempt to model a battery for an electric car."""
 
-# my_new_car.odometer_reading = 23 # Modify the attribute directly
-# my_new_car.read_odometer()
+    def __init__(self, battery_size=75) -> None:
+        """ Initialize the battery's attributes"""
+        self.battery_size = battery_size
 
-my_new_car.update_odometer(10) # Modify the attribute through a method
-my_new_car.read_odometer()
+    def describe_battery(self):
+        """ Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+    
+    def upgrade_battery(self):
+        if self.battery_size != 100:
+            self.battery_size = 100
 
-my_new_car.update_odometer(23)
-my_new_car.read_odometer()
+    def get_range(self):
+        """ Print a statement about the range this battery provides."""
+        if self.battery_size == 75:
+            range = 260
+        elif self.battery_size == 100:
+            range = 315
+        print(f"This car can go about {range} miles on full charge.")
+        
+class ElectricCar(Car):
+    """ Represent aspect of a car, specific to electric vehicles."""
 
-my_new_car.update_odometer(10) # Can't not roll back odometer.
+    def __init__(self, manufacturer, model, year) -> None:
+        ## Initialize attributes of the parent class.
+        super().__init__(manufacturer, model, year)
+        # Defing attributes for the Child Class
+        # self.battery_size = 75 
+        # Instance as attributes from Battery class
+        self.battery = Battery() 
 
-my_new_car.increment_odometer(10) # Increment odometer.
-my_new_car.read_odometer()
-
-your_car = Car('Honda', 'City', 2020)
-print(your_car.get_descriptive_name())
-
-your_car.odometer_reading = 10
-your_car.read_odometer()
-your_car.increment_odometer(-1000) # Milege increment can't negative
-# your_car.read_odometer()
+    # def describe_battery(self):
+    #     """ Print a statement describing the battery size."""
+    #     print(f"This car has a {self.battery_size}-kWh battery.")
+    
+    def fill_gas_tank(self):
+        """ Electric cars don't have gas tank."""
+        print("This car doesn't need a gas tank")
