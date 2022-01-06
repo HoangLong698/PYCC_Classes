@@ -1,4 +1,4 @@
-from Users import Users
+from users import Users
 from privileges import Privileges 
 
 class Admin(Users):
