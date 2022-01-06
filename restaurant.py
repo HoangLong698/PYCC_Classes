@@ -32,16 +32,35 @@ class Restaurant:
     def read_number_served(self):
         print(f"{self.restaurant_name} served {self.number_served} customers.")
 
-my_restaurant = Restaurant("Hoang Long", 'seafood')
+class IceCreamStand(Restaurant):
+    # Initialize IceCream Class inhenritance from Restaurant Class
+    def __init__(self, restaurant_name, cuisine_type):
+        super().__init__(restaurant_name, cuisine_type)
+        self.flavors = ['Chocola', 'Vanila', 'Matcha']
+    
+    # Print list flavors ice cream
+    def get_flavors(self):
+        print(f"The list ice cream flavors of restaurant: ")
+        for flavor in self.flavors:
+            print(f"+ {flavor}")
+
+my_restaurant = Restaurant("Hoang Long", 'Seafood')
 your_restaurant = Restaurant("Da Sac Mau", 'BBQ')
 his_restaurant = Restaurant("Nam Trung Bo", 'Mon Viet')
 
-my_restaurant.describe_restaurant()
+# my_restaurant.describe_restaurant()
 # your_restaurant.describe_restaurant()
 # his_restaurant.describe_restaurant()
 
-my_restaurant.read_number_served()
-my_restaurant.set_number_served(10)
-my_restaurant.read_number_served()
-my_restaurant.increment_number_served(-10)
-my_restaurant.read_number_served()
+# my_restaurant.read_number_served()
+# my_restaurant.set_number_served(10)
+# my_restaurant.read_number_served()
+# my_restaurant.increment_number_served(-10)
+# my_restaurant.read_number_served()
+
+my_icecream_res = IceCreamStand('Trang Tien','Ice Cream')
+my_icecream_res.describe_restaurant()
+my_icecream_res.get_flavors()
+my_icecream_res.read_number_served()
+my_icecream_res.set_number_served(10)
+my_icecream_res.read_number_served()
