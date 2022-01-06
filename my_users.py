@@ -1,4 +1,4 @@
-from Users import Users
+from users import Users
 from admin import Admin
 
 user1 = Users('Long', 'Tran', 21, 160, 60)
